@@ -1449,13 +1449,18 @@
 	</div>
       </template>
 
+
+      <!--
+       [hidden] = "presupuesto.Iniciado == 1 ? false : true"
+      -->
       <div class="my2">
+
         <button 
-	  [hidden] = "presupuesto.Iniciado == 1 ? false : true"
 	  on="tap:amp-access.login-sign-in,AMP.setState({presupuesto: {Iniciado: 2}})"
 	  id="boton-login"
 	  class="ampstart-btn ampstart-btn-secondary ml1 caps">Inicie Sesión
 	</button>
+
 	<span 
           hidden
           [hidden] = "presupuesto.Iniciado == 1 ? false : true">
@@ -1464,14 +1469,19 @@
           hidden
           [hidden] = "presupuesto.Iniciado == 1 ? false : true">   -- o --    
         </span> 
+        <!---
+     amp-access-hide
+        -->
          <button 
          on="tap:amp-access.login-sign-up,AMP.setState({cuenta: {solicitada: true}}),AMP.setState({registro_usuario: {iniciado: 1}})"
-          amp-access-hide
           tabindex="0"
           class="ampstart-btn ml1 caps" >
           Registrarse
          </button>
-        <button amp-access="NOT loggedIn" 
+         <!--
+           amp-access="NOT loggedIn
+         -->
+        <button  
 	  on = "tap:amp-access.login-create-token,AMP.setState({cuenta: {solicitada: true}, presupuesto: {iniciado: 1}})"
 	  tabindex="0"
 	  class="ampstart-btn ml1 caps" >Crear Token
@@ -1483,8 +1493,10 @@
       </div>
 
       <div class="my2">
-
-	<button amp-access="NOT loggedIn" 
+        <!--
+        amp-access="NOT loggedIn
+        -->
+	<button 
 	  on="tap:amp-access.login-sign-in, carrusel-list.refresh"
 	  class="ampstart-btn ampstart-btn-secondary ml1 caps">Inicie sesión
 	</button>
@@ -1495,12 +1507,14 @@
 	  <span amp-access="NOT loggedIn AND presupuesto_local"
 			class="inline-block ml1">...para ver el análisis de factibilidad</span>
 	-->
-
-	<button amp-access="loggedIn"
+        <!--
+        amp-access="loggedIn
+amp-access-hide
+        -->
+	<button
 	  tabindex="0"
 	  on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
-	  class="ampstart-btn ml1 caps"
-	  amp-access-hide>Destroy Reader
+	  class="ampstart-btn ml1 caps">Destroy Reader
 	</button>
       </div>
 
