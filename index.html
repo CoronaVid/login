@@ -1458,7 +1458,7 @@
 	</button>
 	<span 
           hidden
-          [hidden] = "presupuesto.Iniciado == 1 ? false : true">... para ver los detalles
+          [hidden] = "presupuesto.Iniciado == 1 ? false : true">
         </span>
         <span 
           hidden
@@ -1472,25 +1472,23 @@
         <button amp-access="NOT loggedIn" 
 	  on = "tap:amp-access.login-create-token,AMP.setState({cuenta: {solicitada: true}, presupuesto: {iniciado: 1}})"
 	  tabindex="0"
-	  class="ampstart-btn ml1 caps" >Cree una Cuenta
+	  class="ampstart-btn ml1 caps" >Crear Token
 	</button>
 
-	<span amp-access= "NOT subscriber AND NOT loggedIn"  [hidden] = cuenta.solicitada	  >... para publicar sus datos personales con sus síntomas
+	<span amp-access= "NOT subscriber AND NOT loggedIn"  [hidden] = cuenta.solicitada	  >
 	</span>
 
       </div>
 
       <div class="my2">
 
-	<!--
 	<button amp-access="NOT loggedIn" 
 	  on="tap:amp-access.login-sign-in, carrusel-list.refresh"
 	  class="ampstart-btn ampstart-btn-secondary ml1 caps">Inicie sesión
 	</button>
 	
-	<span amp-access="NOT loggedIn">... para analizar sus circuitos
+	<span amp-access="NOT loggedIn">
 	</span>
-        -->	 
 	<!--
 	  <span amp-access="NOT loggedIn AND presupuesto_local"
 			class="inline-block ml1">...para ver el análisis de factibilidad</span>
@@ -1500,8 +1498,8 @@
 	  tabindex="0"
 	  on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
 	  class="ampstart-btn ml1 caps"
-	  amp-access-hide>Elimine la Cuenta
-	</button>... para siempre
+	  amp-access-hide>Destroy Reader
+	</button>
       </div>
 
 
