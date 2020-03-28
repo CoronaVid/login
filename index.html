@@ -1466,7 +1466,10 @@
         </span> 
          <button 
          on="tap:amp-access.login-sign-up,AMP.setState({cuenta: {solicitada: true}}),AMP.setState({registro_usuario: {iniciado: 1}})"
-          amp-access-hide>
+          amp-access-hide
+          tabindex="0"
+          class="ampstart-btn ml1 caps" >
+          Registrarse
          </button>
         <button amp-access="NOT loggedIn" 
 	  on = "tap:amp-access.login-create-token,AMP.setState({cuenta: {solicitada: true}, presupuesto: {iniciado: 1}})"
