@@ -723,10 +723,19 @@
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
       <section amp-access="loggedIn">
+
         <template amp-access-template type="amp-mustache">
-	{{current_user}}          
+        {{circuito}}
+        <!--
+          {{auth_token}}
+        {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
+          {{dueno_remoto}} | current_user {{current_user}}
+        -->
+        {{current_user}}
         </template>
+
       </section>
+
     </div>
     
     <div id="abe-preview">
