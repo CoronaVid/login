@@ -12,13 +12,6 @@
     <meta name="msapplication-TileColor" content="#0c0c0d">
     <meta name="theme-color" content="#ffffff">
 
-    #Permite mostrar un contenido neutro mientras se espera por la respuesta de autenticacion
-    <script id="inicial" type='application/ld+json'>
-    { 
-     "autenticado" : false
-    }
-    </script>
-
 
 
     <script id="amp-access" type="application/json">
@@ -708,6 +701,13 @@
   </head>
 
   <body>
+
+    <amp-state id="currentStep">
+      <script type="application/json">
+       0
+      </script>
+    </amp-state>
+
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
       <section amp-access="loggedIn">
@@ -770,10 +770,11 @@
 		  <amp-selector 
 		    class='poll' 
 		    name='animal-poll' 
-		    on='select:items-list.refresh,AMP.setState({consentimiento: true})'>
+		    on='select:AMP.setState({consentimiento: true})'>
 		    <div option='cat'>Acepto
                     </div>
 		  </amp-selector>
+
 	        </span>
 
 	        <form [hidden]='!consentimiento' action-xhr='https://cornavi.herokuapp.com/contactos/create' amp-access='NOT loggedIn' class='' custom-validation-reporting='show-first-on-submit' method='post' on='submit-success:AMP.setState({contactoSelected: true})' target='_top' verify-xhr="https://cornavi.herokuapp.com/contactos/verify">
