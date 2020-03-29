@@ -734,10 +734,12 @@
 
         <div class="header">
 	</div>
-      
 
         <section amp-access="error">
-          <h2 class="m1"> Autenticando </h2>
+          <template amp-access-template
+            type="amp-mustache">
+            <h2 class="m1"> Autenticando </h2>
+          </template>
         </section>
 
         <section amp-access="loggedIn and NOT error">
