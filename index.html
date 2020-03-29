@@ -28,7 +28,7 @@
     },
     "authorizationFallbackResponse": {
       "error":      true,
-      "access":     true,
+      "access":     false,
       "subscriber": false
     }
     }
@@ -735,12 +735,10 @@
         <div class="header">
 	</div>
 
-        <section amp-access="error">
-          <template amp-access-template
-            type="amp-mustache">
-            <h2 class="m1"> Autenticando </h2>
-          </template>
-        </section>
+        <div amp-access="NOT subscriber"
+          amp-access-hide>
+            <h2 class="m1"> Suscribete Ahora </h2>
+        </div>
 
         <section amp-access="loggedIn AND NOT error">
           <template amp-access-template type="amp-mustache">
