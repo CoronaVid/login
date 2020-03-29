@@ -1457,16 +1457,23 @@
 
         <button 
 	  on="tap:amp-access.login-sign-in,AMP.setState({presupuesto: {Iniciado: 2}})"
-	  id="boton-login"
+	  id="boton-inicie-sesion"
 	  class="ampstart-btn ampstart-btn-secondary ml1 caps">Inicie Sesión
 	</button>
 
 
         <button 
           on="tap:amp-access.login-sign-out,AMP.setState({presupuesto: {Iniciado: 2}})"
-          id="boton-login"
+          id="boton-cerrar-sesion"
           class="ampstart-btn ampstart-btn-secondary ml1 caps">Cerrar Sesión
         </button>
+
+        <button 
+          on="tap:amp-access.login-destroy-user,AMP.setState({presupuesto: {Iniciado: 2}})"
+          id="boton-destroy-user"
+          class="ampstart-btn ampstart-btn-secondary ml1 caps">Destroy User
+        </button>
+
 
 
 
