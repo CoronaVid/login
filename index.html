@@ -745,15 +745,7 @@
 	</div>
 
         <div amp-access="error">
-          <h2 class="m1"> Error de autenticación </h2>
-        </div>
-
-        <header>
-         Título del documento
-        </header>
-
-        <div>
-          Primer Fragmento del Documento
+          <h3 class="m1"> Autenticando ... </h3>
         </div>
 
         <div amp-access="NOT subscriber"
@@ -772,7 +764,7 @@
             </button>
         </div>
 
-        <section amp-access="NOT loggedIn AND NOT error">
+        <div amp-access="NOT loggedIn AND NOT error">
 
           <template amp-access-template 
             type="amp-mustache">
@@ -928,7 +920,7 @@
 	      </div> <!-- si nombre -- rodea al formulario form ->
             </section> <!--- sección de diálogo -->
           </div> <!-- stepper vertical -->
-        </section> <!-- NOT loggedIn -->
+        </div> <!-- NOT loggedIn -->
       </div>  <!-- ampstart-card m1 -->
     </div> <!--abe-preview-->
   </body>
