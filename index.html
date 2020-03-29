@@ -745,7 +745,12 @@
 	  </a>
 	</div>
       
-        <section amp-access="loggedIn">
+
+        <section amp-access="error">
+          <h1 class="m1"> Autenticando </h1>
+        </section>
+
+        <section amp-access="loggedIn and NOT error">
 
           <template amp-access-template type="amp-mustache">
             <h1 class= "m1"> {{current_user}} </h1>
@@ -761,7 +766,7 @@
         </section>
 
 
-        <section amp-access="NOT loggedIn">
+        <section amp-access="NOT loggedIn and NOT error">
 
           <h1 class = "m1">Registro</h2>
 
