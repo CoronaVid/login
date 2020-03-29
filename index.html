@@ -1461,6 +1461,15 @@
 	  class="ampstart-btn ampstart-btn-secondary ml1 caps">Inicie Sesión
 	</button>
 
+
+        <button 
+          on="tap:amp-access.login-sign-out,AMP.setState({presupuesto: {Iniciado: 2}})"
+          id="boton-login"
+          class="ampstart-btn ampstart-btn-secondary ml1 caps">Cerrar Sesión
+        </button>
+
+
+
 	<span 
           hidden
           [hidden] = "presupuesto.Iniciado == 1 ? false : true">
