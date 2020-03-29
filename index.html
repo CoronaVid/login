@@ -905,7 +905,7 @@
                 <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
 	        <button [disabled]='!contactoSelected' [hidden]='!contactoSelected' 
 		  on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-	         amp-access = "NOT loggedIn"
+	         amp-access = "NOT loggedIn AND NOT error"
 	         type='submit'>continuar
 	        </button> <!-- Fin de botón adicional -->
 
