@@ -2,78 +2,23 @@
 <html amp='' lang='es-CL' prefix='og: http://ogp.me/ns#'>
   <head>
 
-
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="apple-mobile-web-app-title" content="Helper Corona Virus">
-    <meta name="application-name" content="Helper Corona Virus">
+    <meta name="apple-mobile-web-app-title" content="Login">
+    <meta name="application-name" content="Login">
     <meta name="msapplication-TileColor" content="#0c0c0d">
     <meta name="theme-color" content="#ffffff">
 
-
-    <meta content='es_CL' property='og:locale'>
-    <meta content='website' property='og:type'>
-    <meta content='Autoayuda Coronavirus COVID-19' property='og:title'>
-    <meta content='Esté atento a los síntomas del Coronavirus en Ud. Self Helper Coronavid es un sistema de registro privado/publico de los síntomas del CoronaVirus COVID-19. Ud. puede elegir entre mantener sus síntomas privados y sin nombre o hacerlos públicos, con o sin su nombre.' property='og:description'>
-    <meta content='https://help.coronavid.cl/' property='og:url'>
-    <meta content='Help Covid' property='og:site_name'>
-
+    #Permite mostrar un contenido neutro mientras se espera por la respuesta de autenticacion
     <script id="inicial" type='application/ld+json'>
     { 
-     "invisible" : false
+     "autenticado" : false
     }
     </script>
 
-    <script id="dueno" type='application/ld+json'>
-
-    { 
-      "invisible" : true
-    }
-    </script>
-
-    <script id="presupuesto_local" type = 'application/ld+json'>
-    {
-      "id" : 0
-    }
-    </script>
-
-    <script id="presupuesto_remoto" type = 'application/ld+json'>
-    {
-      "id" : 0
-    }
-    </script>
-
-
-
-    <script id='Covid_markup' type='application/ld+json'>
-    {
-    "@context" : "http://schema.org",
-    "@type"    : "http://schema.org/Service",
-    "name"     : "Electricista a Domicilio",
-    "image"    : "https://help.coronavid.cl/img/coronavid.png",
-    "description" : "Resuelva sus problemas eléctricos.",
-    "brand" : { "@type" : "Service", "name" : "Electricista a Domicilio"},
-    "offers"   : {  "@type" : "Offer",
-    "price" : "25000",
-    "priceCurrency" : "CLP",
-    "priceValidUntil": "2020-11-05",
-    "itemCondition" : "http://schema.org/NewCondition",
-    "availability" : "http://schema.org/InStock",
-    "seller" :{
-    "@type" : "Organization",
-    "name" : "Alectrica"} } ,
-    "areaServed": {
-    "@type"  : "Place",
-    "address": {
-    "@type" : "PostalAddress",
-    "addressLocality" : "Providencia",
-    "postalCode" : "7500000",
-    "addressRegion" : "RM"}  }
-    }
-    </script>
 
 
     <script id="amp-access" type="application/json">
@@ -134,31 +79,10 @@
     <title>Electricista a Domicilio</title>
 
     <meta name="description" content="Electricista a Domicilio.">
-    <meta itemprop="name" content="Alectrica.">
-    <meta itemprop="description" content="Alectrica."/>
-    <meta itemprop="image" content="https://help.coronavid.cl/img/coronavid.png">
-
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@amphtml">
-    <meta name="twitter:creator" content="@alectrica">
-    <meta name="twitter:title" content="Electricista a Domicilio">
-    <meta name="twitter:description" content="Electricista a Domicilio.">
-    <meta name="twitter:image" content="https://help.coronavid.cl/img/coronavid.png">
-    <meta name="twitter:image:alt" content="Electricista a Domicilio">
-    <meta property="fb:app_id" content="1777886622479021" />
-    <meta property="og:title" content="Alectrica"/>
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="https://help.coronavid.cl/img/coronavid.png" />
-    <meta property="og:url" content="https://help.coronavid.cl/" />
-    <meta property="og:description" content="Monitoreo Comunitario del Corona Virus COVID-19." />
-    <meta property="og:site_name" content="Monitoreo Comunitario del Corona Virus COVID-19" />
-    <meta property="article:published_time" content="2018-09-14T15:57:15.499Z" />
-    <meta property="article:modified_time" content="2018-09-14T15:57:15.499Z" />
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Self Helper Coronavid">
+    <meta name="apple-mobile-web-app-title" content="Login">
     <meta name="mobile-web-app-capable" content="yes">
 	      
     <link href=https://fonts.gstatic.com rel="dns-prefetch preconnect" crossorigin>
@@ -805,7 +729,10 @@
 	    </amp-img>
 	  </a>
 	</div>
-       
+      
+        <section>
+         <h1 class="m1"> Contenido Neutro </h1>
+        </section>
        
         <section amp-access="loggedIn">
 
@@ -830,13 +757,6 @@
 
           <h1 class = "m1">Login</h2>
 	  <h2 class = "m1">Cliente Aléctrico</h3>
-
-          <button amp-access="loggedIn"
-            tabindex="0"
-            on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
-            class="ampstart-btn ml1 caps"
-            amp-access-hide>Destroy Reader
-          </button>
 
 	  <div class = 'stepper vertical' >
 	    <section [hidden]='currentStep > 0'>
