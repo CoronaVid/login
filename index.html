@@ -740,7 +740,7 @@
             <h1 class= "m1"> {{current_user}} </h1>
           </template>
 
-          <button 
+          <button amp-access="loggedIn"
             tabindex="0"
             on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
             class="ampstart-btn ml1 caps"
