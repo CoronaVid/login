@@ -722,7 +722,7 @@
 
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
-      <section amp-access="loggedIn AND NOT error">
+      <section amp-access="subscriber">
         <template amp-access-template type="amp-mustache">
 	{{current_user}}          
         </template>
@@ -735,22 +735,29 @@
         <div class="header">
 	</div>
 
+        <header>
+         Título del documento
+        </header>
+
+        <div>
+          Primer Fragmento del Documento
+        </div>
+
         <div amp-access="NOT subscriber"
           amp-access-hide>
             <h2 class="m1"> Suscribete Ahora </h2>
         </div>
 
-        <section amp-access="loggedIn AND NOT error">
-          <template amp-access-template type="amp-mustache">
+        <div amp-access="subscriber"
+           amp-acccess-hide>
             <h1 class= "m1"> {{current_user}} </h1>
-            <button amp-access="loggedIn and NOT error" 
+            <button 
               tabindex="0"
               on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
               class="ampstart-btn ml1 caps">
               Destroy Reader
             </button>
-          </template>
-        </section>
+        </div>
 
         <section amp-access="NOT loggedIn AND NOT error">
 
