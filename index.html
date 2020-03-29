@@ -894,11 +894,18 @@
 
                 <!-- Botón adicional para continuar --> 
                 <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
-	        <button [disabled]='!contactoSelected' [hidden]='!contactoSelected' 
-		  on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-	         amp-access = "NOT loggedIn AND NOT error"
-	         type='submit'>continuar
-	        </button> <!-- Fin de botón adicional -->
+                
+                <section amp-access="NOT loggedIn AND NOT error">
+                  <template amp-access-template 
+                    type = "mustache">
+	            <button [disabled]='!contactoSelected'
+                      [hidden]='!contactoSelected' 
+		       on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
+	               amp-access = "NOT loggedIn AND NOT error"
+	               type='submit'>continuar
+	            </button> <!-- Fin de botón adicional -->
+                  </template>
+                </section>
 
 	      </div> <!-- si nombre -- rodea al formulario form ->
             </section> <!--- sección de diálogo -->
