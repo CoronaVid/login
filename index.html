@@ -808,160 +808,164 @@
        
        
         <section amp-access="loggedIn">
+
           <template amp-access-template type="amp-mustache">
             <h1 class= "m1"> {{current_user}} </h1>
           </template>
+
+          <button 
+            tabindex="0"
+            on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
+            class="ampstart-btn ml1 caps"
+            amp-access-hide>Destroy Reader
+          </button>
+
         </section>
+
 
         <section amp-access="NOT loggedIn">
           <template amp-access-template type="amp-mustache">
            <h1 class= "m1"> Ud no está logado en el backend de alectrico </h1>
           </template>
-        </section>
 
+          <h1 class = "m1">Login</h2>
+	  <h2 class = "m1">Cliente Aléctrico</h3>
 
-        <h1 class = "m1">Login</h2>
-	<h2 class = "m1">Cliente Aléctrico</h3>
+          <button amp-access="loggedIn"
+            tabindex="0"
+            on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
+            class="ampstart-btn ml1 caps"
+            amp-access-hide>Destroy Reader
+          </button>
 
+	  <div class = 'stepper vertical' >
+	    <section [hidden]='currentStep > 0'>
+	      <div class='clearfix content'>
+	        <span amp-access-hide='' 
+		  amp-access='NOT loggedIn'
+		  role='button' 
+		  tabindex='0'>
+	          <small 
+		    [hidden]='contactoSelected'  >Política de Protección de Los Datos Personales
+		  </small>
+		  <hr>
+		  <small>Sus datos personales y sus síntomas serán hechos públicos desde el momento en que abra su cuenta y eso tendrá caracter de irrevocable. Si elimina la cuenta, los datos desaparecerán del servidor coronavid pero no de las copias que otros hayan realizado. </small>
 
-        <button amp-access="loggedIn"
-          tabindex="0"
-          on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
-          class="ampstart-btn ml1 caps"
-          amp-access-hide>Destroy Reader
-        </button>
+                   <small>Los datos que Ud. haga público podrán ser usados por instituciones de salud que cuenten con un token de acceso con el fin tomar medidas calificadas para combatir la epidema de Corona Virus. Al abrir la cuenta Ud. consiente explícitamente en que sean usados para ese fin. Pero no es posible garantizar que ocurran otros usos fuera del mencionado, por lo que se recomienda un actuar prudente.</small>
+		  <hr>
+		  <p>¿Ud. acepta la forma en que se procesarán sus datos personales?</p>
 
+		  <amp-selector 
+		    class='poll' 
+		    name='animal-poll' 
+		    on='select:items-list.refresh,AMP.setState({consentimiento: true})'>
+		    <div option='cat'>Acepto
+                    </div>
+		  </amp-selector>
+	        </span>
 
+	        <form [hidden]='!consentimiento' action-xhr='https://cornavi.herokuapp.com/contactos/create' amp-access='NOT loggedIn' class='' custom-validation-reporting='show-first-on-submit' method='post' on='submit-success:AMP.setState({contactoSelected: true})' target='_top' verify-xhr="https://cornavi.herokuapp.com/contactos/verify">
+		  <input data-amp-replace='CLIENT_ID' name='clientId' type='hidden' value="CLIENT_ID(uid)">
+		  <p>Ingrese sus datos de contacto</p>
+		  <div class='px2 mt4 md-mt3'>
+		    <div class='flex flex-wrap mxn2'>
 
-	<div class = 'stepper vertical' >
-	  <section [hidden]='currentStep > 0'>
-	    <div class='clearfix content'>
-	      <span amp-access-hide='' 
-		amp-access='NOT loggedIn'
-		role='button' 
-		tabindex='0'>
-		<small 
-		  [hidden]='contactoSelected' 
-		  >Política de Protección de Los Datos Personales
-		</small>
-		<hr>
-		<small>Sus datos personales y sus síntomas serán hechos públicos desde el momento en que abra su cuenta y eso tendrá caracter de irrevocable. Si elimina la cuenta, los datos desaparecerán del servidor coronavid pero no de las copias que otros hayan realizado. </small>
-
-                 <small>Los datos que Ud. haga público podrán ser usados por instituciones de salud que cuenten con un token de acceso con el fin tomar medidas calificadas para combatir la epidema de Corona Virus. Al abrir la cuenta Ud. consiente explícitamente en que sean usados para ese fin. Pero no es posible garantizar que ocurran otros usos fuera del mencionado, por lo que se recomienda un actuar prudente.</small>
-
-
-
-		<hr>
-		<p>¿Ud. acepta la forma en que se procesarán sus datos personales?</p>
-
-		<amp-selector 
-		  class='poll' 
-		  name='animal-poll' 
-		  on='select:items-list.refresh,AMP.setState({consentimiento: true})'>
-		    <div option='cat'>Acepto</div>
-		</amp-selector>
-	      </span>
-
-	      <form [hidden]='!consentimiento' action-xhr='https://cornavi.herokuapp.com/contactos/create' amp-access='NOT loggedIn' class='' custom-validation-reporting='show-first-on-submit' method='post' on='submit-success:AMP.setState({contactoSelected: true})' target='_top' verify-xhr="https://cornavi.herokuapp.com/contactos/verify">
-		<input data-amp-replace='CLIENT_ID' name='clientId' type='hidden' value="CLIENT_ID(uid)">
-		<p>Ingrese sus datos de contacto</p>
-		<div class='px2 mt4 md-mt3'>
-		  <div class='flex flex-wrap mxn2'>
-		    <div class='col-10 md-col-10 px2'>
-		      <div class='ampstart-input inline-block relative m0 p0 mb3'>
-			<input class='block border-none p0 m0' id='verification-email' name='email' on='select:AMP.setState({ contactoSelected: true})' placeholder='email' required='' type='email'>
-			<label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='email'>Email</label>
-			<span validation-for='verification-email' visible-when-invalid='customError'>Este email ya ha sido ocupado por otra persona. Intente con otro.
+		      <div class='col-10 md-col-10 px2'>
+		        <div class='ampstart-input inline-block relative m0 p0 mb3'>
+			  <input class='block border-none p0 m0' id='verification-email' name='email' on='select:AMP.setState({ contactoSelected: true})' placeholder='email' required='' type='email'>
+			  <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='email'>Email</label>
+			  <span validation-for='verification-email' visible-when-invalid='customError'>Este email ya ha sido ocupado por otra persona. Intente con otro.
                          <!---
 			  <button amp-access-hide='' amp-access='NOT loggedIn' class='ampstart-btn mx1 mt1 caps' on='tap:amp-access.login-sign-in' tabindex='0'>Usar</button>
                          -->
-			</span>
-			<span validation-for='verification-email' visible-when-invalid='valueMissing'></span>
-			<span validation-for='verification-email' visible-when-invalid='typeMismatch'></span>
+			  </span>
+			  <span validation-for='verification-email' visible-when-invalid='valueMissing'></span>
+			  <span validation-for='verification-email' visible-when-invalid='typeMismatch'></span>
+		        </div>
 		      </div>
-		    </div>
-		    <div class='col-10 md-col-10 px2'>
-		      <div class='ampstart-input inline-block relative m0 p0 mb3'>
-			<input class='block border-none p0 m0' id='name' name='name' placeholder='Nombre' required type='text' value=''>
-			<label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='name'>Nombre</label>
-			<span validation-for='name' visible-when-invalid='valueMissing'></span>
-		      </div>
-		    </div>
-		    <div class='col-10 md-col-10 px2'>
-		      <div class='ampstart-input inline-block relative m0 p0 mb3'>
-			<input class='block border-none p0 m0' id='verification-fono' name='fono' pattern='(\+56|56|)\W*(2|9)\W*[0-9]{8}' placeholder='Fono' required='' type='text' value=''>
-			<label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='fono'>Fono</label>
-			<span validation-for='verification-fono' visible-when-invalid='valueMissing'></span>
-			<span validation-for='verification-fono' visible-when-invalid='typeMismatch'></span>
-			<span validation-for='verification-fono' visible-when-invalid='patternMismatch'>Debe tener 9 dígitos y puede ingresar el código de país. Ejemplos: 987654321,+56987654321, 227654321, +56227654321</span>
-		      </div>
-		    </div>
 
-                    <div class='col-10 md-col-10 px2'>
-                      <div class='ampstart-input inline-block relative m0 p0 mb3'>
-                        <input class='block border-none p0 m0' id='verification-password' name='password' pattern='\w{8,}' placeholder='Password (6 caracteres)' required='' type='password' value=''>
-                        <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='password'>Password</label>
-                        <span validation-for='verification-password' visible-when-invalid='valueMissing'></span>
-                        <span validation-for='verification-password' visible-when-invalid='typeMismatch'></span>
-                        <span validation-for='verification-password' visible-when-invalid='patternMismatch'>Debe tener 8 o más aracteres.</span>
-                      </div>
-                    </div>
+		      <div class='col-10 md-col-10 px2'>
+		        <div class='ampstart-input inline-block relative m0 p0 mb3'>
+			  <input class='block border-none p0 m0' id='name' name='name' placeholder='Nombre' required type='text' value=''>
+			  <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='name'>Nombre</label>
+			  <span validation-for='name' visible-when-invalid='valueMissing'></span>
+		        </div>
+		      </div>
 
-                    <div class='col-10 md-col-10 px2'>
-                      <div class='ampstart-input inline-block relative m0 p0 mb3'>
-                        <input class='block border-none p0 m0' id='verification-password' name='password_confirmation' pattern='\w{8,}' placeholder='Password (6 caracteres)' required='' type='password' value=''>
-                        <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='password'>Repita la Password</label>
-                        <span validation-for='verification-password' visible-when-invalid='valueMissing'></span>
-                        <span validation-for='verification-password' visible-when-invalid='typeMismatch'></span>
-                        <span validation-for='verification-password' visible-when-invalid='patternMismatch'>Debe tener 8 o más caracteres.</span>
+		      <div class='col-10 md-col-10 px2'>
+		        <div class='ampstart-input inline-block relative m0 p0 mb3'>
+			  <input class='block border-none p0 m0' id='verification-fono' name='fono' pattern='(\+56|56|)\W*(2|9)\W*[0-9]{8}' placeholder='Fono' required='' type='text' value=''>
+			  <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='fono'>Fono</label>
+			  <span validation-for='verification-fono' visible-when-invalid='valueMissing'></span>
+			  <span validation-for='verification-fono' visible-when-invalid='typeMismatch'></span>
+			  <span validation-for='verification-fono' visible-when-invalid='patternMismatch'>Debe tener 9 dígitos y puede ingresar el código de país. Ejemplos: 987654321,+56987654321, 227654321, +56227654321</span>
+		        </div>
+		      </div>
+
+                      <div class='col-10 md-col-10 px2'>
+                        <div class='ampstart-input inline-block relative m0 p0 mb3'>
+                          <input class='block border-none p0 m0' id='verification-password' name='password' pattern='\w{8,}' placeholder='Password (6 caracteres)' required='' type='password' value=''>
+                          <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='password'>Password</label>
+                          <span validation-for='verification-password' visible-when-invalid='valueMissing'></span>
+                          <span validation-for='verification-password' visible-when-invalid='typeMismatch'></span>
+                          <span validation-for='verification-password' visible-when-invalid='patternMismatch'>Debe tener 8 o más aracteres.</span>
+                        </div>
                       </div>
-                    </div>
+
+                      <div class='col-10 md-col-10 px2'>
+                        <div class='ampstart-input inline-block relative m0 p0 mb3'>
+                          <input class='block border-none p0 m0' id='verification-password' name='password_confirmation' pattern='\w{8,}' placeholder='Password (6 caracteres)' required='' type='password' value=''>
+                          <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='password'>Repita la Password</label>
+                          <span validation-for='verification-password' visible-when-invalid='valueMissing'></span>
+                          <span validation-for='verification-password' visible-when-invalid='typeMismatch'></span>
+                          <span validation-for='verification-password' visible-when-invalid='patternMismatch'>Debe tener 8 o más caracteres.</span>
+                        </div>
+                      </div>
+		    </div>
+                  </div>
+
+		  <div class='flex flex-wrap mxn2'>
+		    <button [disabled]='contactoSelected' 
+		      type='submit'>Suscribirse</button>
 		  </div>
-		</div>
 
-		<div class='flex flex-wrap mxn2'>
-		  <button [disabled]='contactoSelected' 
-		    type='submit'
-		    >Suscribirse</button>
-		</div>
+		  <div submit-success=''>
+		    <template type='amp-mustache'>
+		    !Todo resultó bien!
+		    </template>
+		  </div>
 
-		<div submit-success=''>
-		  <template type='amp-mustache'>
-		  !Todo resultó bien!
-		  </template>
-		</div>
+		  <div submit-error=''>
+		    <template type='amp-mustache'>
 
-		<div submit-error=''>
-		  <template type='amp-mustache'>
+		      {{#verifyErrors}}
+		      <p>{{name}} {{message}}</p>
+		      {{/verifyErrors}}
 
-		    {{#verifyErrors}}
-		    <p>{{name}} {{message}}</p>
-		    {{/verifyErrors}}
-
-		    {{^verifyErrors}}
-		    <p>Ocurrió un error de servidor. Intente nuevamente.</p>
-		    {{/verifyErrors}}
+		      {{^verifyErrors}}
+		      <p>Ocurrió un error de servidor. Intente nuevamente.</p>
+		      {{/verifyErrors}}
 		    
-		    {{#error}}
-		    <p>{{message}}</p>
-		    {{/error}}
+		      {{#error}}
+		      <p>{{message}}</p>
+		      {{/error}}
 
-		  </template>
-		</div> 
+		    </template>
+	          </div> 
+                </form>
 
-	      </form>
+                <!-- Botón adicional para continuar --> 
+                <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
+	        <button [disabled]='!contactoSelected' [hidden]='!contactoSelected' 
+		  on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
+	         amp-access = "NOT loggedIn"
+	         type='submit'>continuar
+	        </button> <!-- Fin de botón adicional -->
 
-              <!-- Botón adicional para continuar --> 
-              <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
-	      <button [disabled]='!contactoSelected' [hidden]='!contactoSelected' 
-		on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-		amp-access = "NOT loggedIn"
-		type='submit'>continuar
-	      </button>
-              <!-- Fin de botón adicional -->
-	    </div> <!-- si nombre -- rodea al formulario form -->
-	  </section> <!--- sección de diálogo -->
-        </div> <!-- stepper vertical -->
+	      </div> <!-- si nombre -- rodea al formulario form ->
+            </section> <!--- sección de diálogo -->
+          </div> <!-- stepper vertical -->
+        </section> <!-- NOT loggedIn -->
       </div>  <!-- ampstart-card m1 -->
     </div> <!--abe-preview-->
   </body>
