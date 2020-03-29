@@ -773,7 +773,7 @@
           </template>
 
 	  <div class = 'stepper vertical' >
-	    <section [hidden]='currentStep > 0'>
+	    <div [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span amp-access-hide='' 
 		  amp-access='NOT loggedIn'
@@ -906,7 +906,7 @@
                 <!-- Botón adicional para continuar --> 
                 <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
                 
-                <section amp-access="NOT loggedIn AND NOT error">
+                <div amp-access="NOT loggedIn AND NOT error">
                   <template amp-access-template 
                     type = "mustache">
 	            <button [disabled]='!contactoSelected'
@@ -916,10 +916,10 @@
 	               type='submit'>continuar
 	            </button> <!-- Fin de botón adicional -->
                   </template>
-                </section>
+                </div>
 
 	      </div> <!-- si nombre -- rodea al formulario form ->
-            </section> <!--- sección de diálogo -->
+            </div> <!--- sección de diálogo -->
           </div> <!-- stepper vertical -->
         </div> <!-- NOT loggedIn -->
       </div>  <!-- ampstart-card m1 -->
