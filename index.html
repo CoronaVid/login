@@ -753,16 +753,14 @@
         <section amp-access="loggedIn and NOT error">
           <template amp-access-template type="amp-mustache">
             <h1 class= "m1"> {{current_user}} </h1>
+            <button amp-access="loggedIn and NOT error" 
+              tabindex="0"
+              on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
+              class="ampstart-btn ml1 caps">
+              Destroy Reader
+            </button>
           </template>
         </section>
-          
-        <button amp-access="loggedIn and NOT error" 
-          tabindex="0"
-          on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
-          class="ampstart-btn ml1 caps">
-          Destroy Reader
-        </button>
-
 
         <section amp-access="NOT loggedIn AND NOT error">
 
