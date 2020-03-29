@@ -805,6 +805,19 @@
 	    </amp-img>
 	  </a>
 	</div>
+       
+        <setion amp-access="loggedIn">
+          <template amp-access-template type="amp-mustache">
+            <h1 class= "m1"> {{current_user}} </h1>
+          </template>
+        </section>
+
+        <setion amp-access="NotloggedIn">
+          <template amp-access-template type="amp-mustache">
+           Ud no está logado en el backend de alectrico
+          </template>
+        </section>
+
 
         <h1 class = "m1">Login</h2>
 	<h2 class = "m1">Cliente Aléctrico</h3>
