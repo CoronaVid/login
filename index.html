@@ -784,63 +784,12 @@
   </head>
 
   <body>
-    <!--
-    <amp-state
-       id = "remoto"
-       src="https://cornavi.herokuapp.com/api/v1/electrico/circuitos/cart.json?clientId=CLIENT_ID(uid)&_=RANDOM">
-     </amp-state>
-    -->
-    <amp-sidebar id="drawermenu" layout="nodisplay">
-      <!--
-      <a href="https://servicios.coronavid.cl" class="caps text-decoration-none block p1">Servicios</a>
-      <a href="https://shop.coronavid.cl" class="caps text-decoration-none block p1">Shop</a>
-
-      <hr>
-      <a class="caps text-decoration-none block p1" 
-        href="https://coronavid.cl/santiago">Santiago</a> 
-
-      <a class="caps text-decoration-none block p1" 
-        href="https://coronavid.cl/providencia">Providencia</a> 
-      <a class="caps text-decoration-none block p1"
-        href="https://coronavid.cl/ñuñoa">Ñuñoa</a>
-      -->
-      <a class="caps text-decoration-none block p1"
-        href="https://cdc.gov/spanish">CDC</a>
-      <a class="caps text-decoration-none block p1"
-        href="https://help.coronavid.cl">Help</a>
-
-    </amp-sidebar>
-
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
-      <amp-img srcset="/safari-pinned-tab.svg" 
-        width="24" 
-        height="24" 
-        alt="logo flash">
-      </amp-img>
-
-      <section amp-access="NOT loggedIn">
-        <template amp-access-template type="amp-mustache">
-	<!--
-         {{presupuesto_local}}-local
-	 -->
-	 
-        </template>
-      </section>
-
-
       <section amp-access="loggedIn">
-
         <template amp-access-template type="amp-mustache">
-        {{circuito}}
-	<!--
-	  {{auth_token}}
-	{{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
-	  {{dueno_remoto}} | current_user {{current_user}}
-	-->
 	{{current_user}}          
         </template>
-
       </section>
     </div>
     
