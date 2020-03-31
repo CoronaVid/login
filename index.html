@@ -20,6 +20,7 @@
     "noPingback": true,
     "login": {
     "create-token":"https://cornavi.herokuapp.com/create_token.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
+    "create-reader":"https://cornavi.herokuapp.com/create_reader.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
     "sign-in": "https://cornavi.herokuapp.com/sign_in.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
     "sign-out": "https://cornavi.herokuapp.com/logout.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
      "destroy-reader": "https://cornavi.herokuapp.com/destroy_reader.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
@@ -911,7 +912,7 @@
 
                     <button [disabled]='!contactoSelected'
                       [hidden]='!contactoSelected' 
-                       on="tap:amp-access.login-sign-up,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
+                       on="tap:amp-access.login-create-reader,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
                        type='submit'>Crear Reader
                     </button> <!-- Fin de botón adicional -->
 
