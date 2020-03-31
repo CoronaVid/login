@@ -813,6 +813,12 @@
                        type='hidden' 
                        value="CLIENT_ID(uid)">
 
+                  <input data-amp-replace='READER_ID' 
+                       name='rid' 
+                       type='hidden' 
+                       value="READER_ID(uid)">
+
+
 		  <p>Ingrese sus datos de contacto</p>
 
 		  <div class='row px2 mt4 md-mt3'>
@@ -901,6 +907,16 @@
 		    </template>
 	          </div> 
                 </form>
+
+
+                    <button [disabled]='!contactoSelected'
+                      [hidden]='!contactoSelected' 
+                       on="tap:amp-access.login-sign-up,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
+                       type='submit'>Crear Reader
+                    </button> <!-- Fin de botón adicional -->
+
+
+
 
                 <!-- Botón adicional para continuar --> 
                 <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
