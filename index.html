@@ -756,7 +756,9 @@
         </div>
        -->
 
-        <div amp-access="NOT loggedIn AND NOT error">
+        <div amp-access="NOT loggedIn AND NOT error"
+          hidden
+          >
 
           <template amp-access-template 
             type="amp-mustache">
@@ -907,24 +909,26 @@
         </div> <!-- NOT loggedIn -->
 
       </div>  <!-- ampstart-card m1 -->
-      
-           <button
-             on="tap:amp-access.login-create-reader"
-             class="ampstart-btn ml1 caps">
-             Crear Reader
-           </button>
 
-           <button
-              on="tap:amp-access.login-destroy-reader"
-              class="ampstart-btn ml1 caps">
-              Destroy Reader
-            </button>
+      <div class="ampstart-card m1">
+        <button
+          on="tap:amp-access.login-create-reader"
+          class="ampstart-btn ml1 caps">
+          Crear Reader
+        </button>
 
-            <button
-               on="tap:amp-access.login-sign-in"
-               class="ampstart-btn ml1 caps">
-               Iniciar Sesión
-            </button>
+        <button
+           on="tap:amp-access.login-destroy-reader"
+           class="ampstart-btn ml1 caps">
+           Destroy Reader
+         </button>
+
+         <button
+            on="tap:amp-access.login-sign-in"
+            class="ampstart-btn ml1 caps">
+            Iniciar Sesión
+         </button>
+      </div> <!-- ampstart-card m1 -->
 
     </div> <!--abe-preview-->
   </body>
