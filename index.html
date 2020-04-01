@@ -766,38 +766,46 @@
           Se encontró un error durante la carga, refresque la página para reintentar.
         </div>
         -->
-           <h1 class="m1" > Suscripción
-           </h1>
-           <h2 class="m1">
-             Abra una suscripción para recibir notificaciones de nuevos trabajos
+           <h2 amp-access="NOT loggedIn AND NOT subscriber" 
+             class="m1" > 
+             Suscripción
            </h2>
-          <button amp-access="NOT subscriber"
+
+           <h3 amp-access="NOT loggedIn AND NOT subscriber" 
+             class="m1">
+             Abra una suscripción para recibir notificaciones de nuevos trabajos
+           </h3>
+
+          <button amp-access="NOT loggedIn AND NOT subscriber"
             on="tap:amp-access.login-create-reader"
             class="ampstart-btn ml1 caps">
             Abrir Suscripción
           </button>
 
 
-          <button amp-access="subscriber"
+          <button amp-access="NOT loggedIn AND subscriber"
             on="tap:amp-access.login-destroy-reader"
             class="ampstart-btn ml1 caps">
             Cerrar Suscripción 
            </button>
 
-           <h1 amp-access="subscriber" class="m1">
+           <h2 amp-access="subscriber" 
+             class="m1">
              Sesión
-           </h1>
-
-           <h2 amp-access="subscriber" class="m1">
-             Abra una sesión para consultar información del día.
            </h2>
+
+           <h3 amp-access="subscriber"
+             class="m1">
+             Abra una sesión para consultar información del día.
+           </h3>
+
            <button amp-access="NOT loggedIn AND subscriber"
              on="tap:amp-access.login-sign-in"
              class="ampstart-btn ml1 caps">
              Iniciar Sesión
            </button>
 
-           <button amp-access="loggedIn"
+           <button amp-access="loggedIn AND subscriber"
              on="tap:amp-access.login-sign-out"
              class="ampstart-btn ml1 caps">
              Cerrar Sesión
