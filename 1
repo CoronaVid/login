@@ -20,15 +20,16 @@
     "noPingback": true,
     "login": {
     "create-token":"https://cornavi.herokuapp.com/create_token.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
+    "create-reader":"https://cornavi.herokuapp.com/create_reader.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
     "sign-in": "https://cornavi.herokuapp.com/sign_in.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
-    "sign-out": "https://cornavi.herokuapp.com/logout.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
+    "sign-out": "https://cornavi.herokuapp.com/logout_reader.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
      "destroy-reader": "https://cornavi.herokuapp.com/destroy_reader.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
      "destroy-user": "https://cornavi.herokuapp.com/destroy_user.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)",
      "sign-up":  "https://cornavi.herokuapp.com/sign_up.json/?rid=READER_ID&return=RETURN_URL&amp=true&clientId=CLIENT_ID(uid)"
     },
     "authorizationFallbackResponse": {
-      "error": true,
-      "access": false,
+      "error":      true,
+      "access":     false,
       "subscriber": false
     }
     }
@@ -720,56 +721,95 @@
       </script>
     </amp-state>
 
-
-
-
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
       <section amp-access="loggedIn">
+        loggedIn
         <template amp-access-template type="amp-mustache">
-	{{current_user}}          
+        <!--
+          {{auth_token}}
+        {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
+          {{dueno_remoto}} | current_user {{current_user}}
+        -->
+        {{current_reader}}
         </template>
       </section>
+
+      <section amp-access="NOT loggedIn">
+        NOT loggedIn
+        <template amp-access-template type="amp-mustache">
+        <!--
+          {{auth_token}}
+        {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
+          {{dueno_remoto}} | current_user {{current_user}}
+        -->
+        {{current_reader}}
+        </template>
+      </section>
+
     </div>
     
     <div id="abe-preview">
+
       <div class="ampstart-card m1">
 
         <div class="header">
- 	  <a id="sample-menu" on="tap:drawermenu.toggle">
-	    <amp-img srcset="/img/ic_menu_white_1x_web_24dp.png 1x, /img/ic_menu_white_2x_web_24dp.png 2x" 
-	      width="24" 
-	      height="24" 
-	     alt="navigation">
-	    </amp-img>
-	  </a>
-	</div>
-      
+        </div>
 
-        <section amp-access="error">
-          <h1 class="m1"> Autenticando </h1>
-        </section>
 
-        <section amp-access="loggedIn and NOT error">
-          <template amp-access-template type="amp-mustache">
-            <h1 class= "m1"> {{current_user}} </h1>
-          </template>
-        </section>
-          
-        <button 
-          tabindex="0"
-          on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
+        <!---
+        <div class="amp-access-loading">
+          Cargando
+        </div>
+
+        <div class="amp-access-error">
+          Se encontró un error durante la carga, refresque la página para reintentar.
+        </div>
+        -->
+
+        <button
+          on="tap:amp-access.login-create-reader"
           class="ampstart-btn ml1 caps">
-          Destroy Reader
+          Suscribirse
         </button>
 
+        <button
+          on="tap:amp-access.login-destroy-reader"
+          class="ampstart-btn ml1 caps">
+          Dejar de estar suscrito
+         </button>
 
-        <section amp-access="NOT loggedIn AND NOT error">
+         <button
+           on="tap:amp-access.login-sign-in"
+           class="ampstart-btn ml1 caps">
+           Iniciar Sesión
+         </button>
 
-          <h1 class = "m1">Registro</h2>
+         <button
+           on="tap:amp-access.login-sign-out"
+           class="ampstart-btn ml1 caps">
+           Cerrar Sesión
+         </button>
+
+
+      </div> <!-- ampstart-card m1 -->
+
+
+
+
+        <div amp-access="NOT loggedIn AND NOT error"
+          hidden
+          >
+
+          <template amp-access-template 
+            type="amp-mustache">
+            <h1 class = "m1">Registro</h1>
+          </template>
 
 	  <div class = 'stepper vertical' >
-	    <section [hidden]='currentStep > 0'>
+	    <div 
+              hidden
+              [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span amp-access-hide='' 
 		  amp-access='NOT loggedIn'
@@ -810,9 +850,15 @@
                        type='hidden' 
                        value="CLIENT_ID(uid)">
 
+                  <input data-amp-replace='READER_ID' 
+                       name='rid' 
+                       type='hidden' 
+                       value="READER_ID(uid)">
+
+
 		  <p>Ingrese sus datos de contacto</p>
 
-		  <div class='px2 mt4 md-mt3'>
+		  <div class='row px2 mt4 md-mt3'>
 		    <div class='flex flex-wrap mxn2'>
 
 		      <div class='col-10 md-col-10 px2'>
@@ -829,7 +875,7 @@
 		        </div>
 		      </div>
 
-		      <div class='col-10 md-col-10 px2'>
+		      <div class='col-9 md-col-9 px2'>
 		        <div class='ampstart-input inline-block relative m0 p0 mb3'>
 			  <input class='block border-none p0 m0' id='name' name='name' placeholder='Nombre' required type='text' value=''>
 			  <label aria-hidden='true' class='absolute top-0 right-0 bottom-0 left-0' for='name'>Nombre</label>
@@ -898,20 +944,13 @@
 		    </template>
 	          </div> 
                 </form>
-
-                <!-- Botón adicional para continuar --> 
-                <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
-	        <button [disabled]='!contactoSelected' [hidden]='!contactoSelected' 
-		  on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-	         amp-access = "NOT loggedIn AND NOT error"
-	         type='submit'>continuar
-	        </button> <!-- Fin de botón adicional -->
-
-	      </div> <!-- si nombre -- rodea al formulario form ->
-            </section> <!--- sección de diálogo -->
+	      </div> <!-- si nombre -->
+            </div> <!--- sección de diálogo -->
           </div> <!-- stepper vertical -->
-        </section> <!-- NOT loggedIn -->
+        </div> <!-- NOT loggedIn -->
+
       </div>  <!-- ampstart-card m1 -->
-    </div> <!--abe-preview-->
+    </div>
+
   </body>
 </html>
