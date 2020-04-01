@@ -803,9 +803,13 @@
              Cerrar Sesión
            </button>
 
-         <h1 amp-access-hide class="m1"> Cliente
+         <h1 amp-access="Subscriber AND loggedIn"
+            class="m1"> Registro
          </h1>
-
+         <h2 amp-access="Subscriber AND loggedIn"
+            class="m1" >
+           Regístrese como Colaborador para tomar solicitudes de clientes
+         </h2>
        <!--
 
         <div amp-access="NOT loggedIn AND NOT error"
@@ -817,8 +821,9 @@
           </template>
         -->
 
-	  <div class = 'stepper vertical' >
-	    <div  amp-access-hide
+	  <div amp-acess="Subscriber AND loggedIn"
+            class = 'stepper vertical' >
+	    <div  
               [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span amp-access-hide='' 
