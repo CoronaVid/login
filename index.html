@@ -831,11 +831,10 @@
 
 	  <div amp-acess="subscriber AND loggedIn"
             class = 'stepper vertical' >
-	    <div  
+	    <div amp-acess="subscriber AND loggedIn"
               [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
-	        <span amp-access-hide='' 
-		  amp-access='NOT loggedIn'
+	        <span  
 		  role='button' 
 		  tabindex='0'>
 	          <small 
