@@ -749,10 +749,12 @@
           <h3 class="m1"> Autenticando ... </h3>
         </div>
 
+       <!---
         <div amp-access="NOT subscriber"
           amp-access-hide>
             <h4 class="m1"> Regístrate Ahora </h4>
         </div>
+       -->
 
         <div amp-access="subscriber"
            amp-acccess-hide>
@@ -773,7 +775,9 @@
           </template>
 
 	  <div class = 'stepper vertical' >
-	    <div [hidden]='currentStep > 0'>
+	    <div 
+              hidden
+              [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span amp-access-hide='' 
 		  amp-access='NOT loggedIn'
