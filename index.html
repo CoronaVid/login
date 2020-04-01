@@ -756,17 +756,6 @@
         </div>
        -->
 
-        <div amp-access="subscriber"
-           amp-acccess-hide>
-           <button amp-access="subscriber"
-              amp-access-hide
-              tabindex="0"
-              on="tap:amp-access.login-destroy-reader,AMP.setState({ dueno: { invisible: true },  presupuesto: { iniciado: 0 }  })"
-              class="ampstart-btn ml1 caps">
-              Destroy Reader
-            </button>
-        </div>
-
         <div amp-access="NOT loggedIn AND NOT error">
 
           <template amp-access-template 
@@ -912,30 +901,30 @@
 		    </template>
 	          </div> 
                 </form>
-
-
-                    <button [disabled]='!contactoSelected'
-                      [hidden]='!contactoSelected' 
-                       on="tap:amp-access.login-create-reader,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-                       type='submit'>Crear Reader
-                    </button> <!-- Fin de botón adicional -->
-
-
-
-
-                <!-- Botón adicional para continuar --> 
-                <!-- intenta hacer login, si lo logra, habrá logado al contacto recién ingresado -->
-                
-	            <button [disabled]='!contactoSelected'
-                      [hidden]='!contactoSelected' 
-		       on="tap:amp-access.login-sign-in,AMP.pushState({currentStep: 0, contactoSelected: false, consentimiento: false, cuenta: {solicitada: false} })"
-	               type='submit'>Iniciar Sesión
-	            </button> <!-- Fin de botón adicional -->
-
-	      </div> <!-- si nombre -- rodea al formulario form -->
+	      </div> <!-- si nombre -->
             </div> <!--- sección de diálogo -->
           </div> <!-- stepper vertical -->
         </div> <!-- NOT loggedIn -->
+
+           <button
+             on="tap:amp-access.login-create-reader"
+             type='submit'>
+             Crear Reader
+           </button>
+
+           <button
+              on="tap:amp-access.login-destroy-reader"
+              class="ampstart-btn ml1 caps">
+              Destroy Reader
+            </button>
+
+            <button
+               on="tap:amp-access.login-sign-in"
+               type='submit'>
+               Iniciar Sesión
+            </button> 
+
+
       </div>  <!-- ampstart-card m1 -->
     </div> <!--abe-preview-->
   </body>
