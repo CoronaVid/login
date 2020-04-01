@@ -774,7 +774,7 @@
           Suscribirse
         </button>
 
-        <button
+        <button amp-access-hide
           on="tap:amp-access.login-destroy-reader"
           class="ampstart-btn ml1 caps">
           Terminar 
@@ -782,19 +782,19 @@
 
          <h1 class="m1"> Sesión
          </h1>
-         <button
+         <button amp-access-hide
            on="tap:amp-access.login-sign-in"
            class="ampstart-btn ml1 caps">
            Iniciar Sesión
          </button>
 
-         <button
+         <button amp-access-hide
            on="tap:amp-access.login-sign-out"
            class="ampstart-btn ml1 caps">
            Cerrar Sesión
          </button>
 
-         <h1 class="m1"> Cliente
+         <h1 amp-access-hide class="m1"> Cliente
          </h1>
 
        <!--
@@ -809,7 +809,7 @@
         -->
 
 	  <div class = 'stepper vertical' >
-	    <div 
+	    <div  amp-access-hide
               [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span amp-access-hide='' 
