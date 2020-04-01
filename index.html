@@ -766,16 +766,16 @@
           Se encontró un error durante la carga, refresque la página para reintentar.
         </div>
         -->
-         <div amp-access-hide >
            <h1 class="m1" > Suscripción
            </h1>
-          <button
+          <button amp-access="NOT Subscriber"
             on="tap:amp-access.login-create-reader"
             class="ampstart-btn ml1 caps">
             Suscribirse
           </button>
 
-          <button amp-access-hide
+
+          <button amp-access="Subscriber"
             on="tap:amp-access.login-destroy-reader"
             class="ampstart-btn ml1 caps">
             Terminar 
@@ -784,18 +784,17 @@
            <h1 class="m1"> Sesión
            </h1>
 
-           <button amp-access-hide
+           <button amp-access="NOT loggedIn"
              on="tap:amp-access.login-sign-in"
              class="ampstart-btn ml1 caps">
              Iniciar Sesión
            </button>
 
-           <button amp-access-hide
+           <button amp-access="loggedIn"
              on="tap:amp-access.login-sign-out"
              class="ampstart-btn ml1 caps">
              Cerrar Sesión
            </button>
-         </div>
 
          <h1 amp-access-hide class="m1"> Cliente
          </h1>
