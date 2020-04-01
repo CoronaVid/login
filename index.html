@@ -724,7 +724,7 @@
     <div id="abe-preview-header" 
       class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
       <section amp-access="loggedIn">
-
+        loggedIn
         <template amp-access-template type="amp-mustache">
         <!--
           {{auth_token}}
@@ -733,7 +733,18 @@
         -->
         {{current_reader}}
         </template>
+      </section>
 
+      <section amp-access="NOT loggedIn">
+        NOT loggedIn
+        <template amp-access-template type="amp-mustache">
+        <!--
+          {{auth_token}}
+        {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
+          {{dueno_remoto}} | current_user {{current_user}}
+        -->
+        {{current_reader}}
+        </template>
       </section>
 
     </div>
@@ -762,6 +773,14 @@
             class="ampstart-btn ml1 caps">
             Iniciar Sesión
          </button>
+
+         <button
+            on="tap:amp-access.login-sign-out"
+            class="ampstart-btn ml1 caps">
+            Cerrar Sesión
+         </button>
+
+
       </div> <!-- ampstart-card m1 -->
 
 
