@@ -831,7 +831,7 @@
 
 	  <div amp-access="subscriber AND loggedIn"
             class = 'stepper vertical' >
-	    <div amp-access="subscriber AND loggedIn"
+	    <div 
               [hidden]='currentStep > 0'>
 	      <div class='clearfix content'>
 	        <span  
@@ -861,7 +861,6 @@
                   hidden
                   [hidden]='!consentimiento' 
                   action-xhr='https://cornavi.herokuapp.com/contactos/create' 
-                  amp-access='NOT loggedIn' 
                   class='' custom-validation-reporting='show-first-on-submit' 
                   method='post' 
                   on='submit-success:AMP.setState({contactoSelected: true})' 
