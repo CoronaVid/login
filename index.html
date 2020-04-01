@@ -768,22 +768,29 @@
         -->
            <h1 class="m1" > Suscripción
            </h1>
+           <h2 class="m1">
+             Abra una suscripción para recibir notificaciones de nuevos trabajos
+           </h2>
           <button amp-access="NOT subscriber"
             on="tap:amp-access.login-create-reader"
             class="ampstart-btn ml1 caps">
-            Suscribirse
+            Abrir Suscripción
           </button>
 
 
           <button amp-access="subscriber"
             on="tap:amp-access.login-destroy-reader"
             class="ampstart-btn ml1 caps">
-            Terminar 
+            Cerrar Suscripción 
            </button>
 
-           <h1 class="m1"> Sesión
+           <h1 amp-access="subscriber" class="m1">
+             Sesión
            </h1>
 
+           <h2 amp-access="subscriber" class="m1">
+             Abra una sesión para consultar información del día.
+           </h2>
            <button amp-access="NOT loggedIn AND subscriber"
              on="tap:amp-access.login-sign-in"
              class="ampstart-btn ml1 caps">
