@@ -726,8 +726,8 @@
       <section amp-access="loggedIn">
         loggedIn
         <template amp-access-template type="amp-mustache">
+        {{auth_token}}
         <!--
-          {{auth_token}}
         {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
           {{dueno_remoto}} | current_user {{current_user}}
         -->
@@ -738,8 +738,8 @@
       <section amp-access="NOT loggedIn">
         NOT loggedIn
         <template amp-access-template type="amp-mustache">
+        {{auth_token}}
         <!--
-          {{auth_token}}
         {{presupuesto_local}}-local {{dueno_local}} | remoto-{{presupuesto_remoto}}
           {{dueno_remoto}} | current_user {{current_user}}
         -->
@@ -766,33 +766,36 @@
           Se encontró un error durante la carga, refresque la página para reintentar.
         </div>
         -->
-         <h1 class="m1" > Suscripción
-         </h1>
-        <button
-          on="tap:amp-access.login-create-reader"
-          class="ampstart-btn ml1 caps">
-          Suscribirse
-        </button>
+         <div amp-access-hide >
+           <h1 class="m1" > Suscripción
+           </h1>
+          <button
+            on="tap:amp-access.login-create-reader"
+            class="ampstart-btn ml1 caps">
+            Suscribirse
+          </button>
 
-        <button amp-access-hide
-          on="tap:amp-access.login-destroy-reader"
-          class="ampstart-btn ml1 caps">
-          Terminar 
-         </button>
+          <button amp-access-hide
+            on="tap:amp-access.login-destroy-reader"
+            class="ampstart-btn ml1 caps">
+            Terminar 
+           </button>
 
-         <h1 class="m1"> Sesión
-         </h1>
-         <button amp-access-hide
-           on="tap:amp-access.login-sign-in"
-           class="ampstart-btn ml1 caps">
-           Iniciar Sesión
-         </button>
+           <h1 class="m1"> Sesión
+           </h1>
 
-         <button amp-access-hide
-           on="tap:amp-access.login-sign-out"
-           class="ampstart-btn ml1 caps">
-           Cerrar Sesión
-         </button>
+           <button amp-access-hide
+             on="tap:amp-access.login-sign-in"
+             class="ampstart-btn ml1 caps">
+             Iniciar Sesión
+           </button>
+
+           <button amp-access-hide
+             on="tap:amp-access.login-sign-out"
+             class="ampstart-btn ml1 caps">
+             Cerrar Sesión
+           </button>
+         </div>
 
          <h1 amp-access-hide class="m1"> Cliente
          </h1>
